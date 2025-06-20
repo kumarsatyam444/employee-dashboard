@@ -11,3 +11,146 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Custom Calendar Styles */
+.rbc-calendar {
+  font-family: inherit;
+}
+
+.rbc-toolbar {
+  margin-bottom: 20px;
+}
+
+.rbc-toolbar button {
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 0 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rbc-toolbar button:hover {
+  background-color: #f5f5f5;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-color: #1976d2;
+  color: white;
+  border-color: #1976d2;
+}
+
+.rbc-event {
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+.rbc-selected {
+  background-color: #1976d2 !important;
+}
+
+.rbc-today {
+  background-color: rgba(25, 118, 210, 0.1);
+}
+
+/* Kanban Board Styles */
+.kanban-column {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 500px;
+}
+
+.kanban-task {
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: grab;
+  transition: all 0.2s;
+}
+
+.kanban-task:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.kanban-task:active {
+  cursor: grabbing;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rbc-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .rbc-toolbar-label {
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  .kanban-board {
+    flex-direction: column;
+  }
+  
+  .kanban-column {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
