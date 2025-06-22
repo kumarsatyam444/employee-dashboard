@@ -8,25 +8,28 @@ import Employees from './pages/Employees';
 import Calendar from './pages/Calendar';
 import Tasks from './pages/Tasks';
 import Settings from './pages/Settings';
+import './App.css';
 
 function App() {
   return (
-    <CustomThemeProvider>
-      <EmployeeProvider>
-        <Router>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/employees" element={<Employees />} />
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/tasks" element={<Tasks />} />
-              <Route path="/settings" element={<Settings />} />
-            </Routes>
-          </Layout>
-        </Router>
-      </EmployeeProvider>
-    </CustomThemeProvider>
+    <div className="App">
+      <CustomThemeProvider>
+        <EmployeeProvider>
+          <Router>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/employees" element={<Employees />} />
+                <Route path="/calendar" element={<Calendar />} />
+                <Route path="/tasks" element={<Tasks />} />
+                <Route path="/settings" element={<Settings />} />
+              </Routes>
+            </Layout>
+          </Router>
+        </EmployeeProvider>
+      </CustomThemeProvider>
+    </div>
   );
 }
 

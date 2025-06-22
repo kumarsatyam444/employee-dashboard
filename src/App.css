@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+/* Layout Styles - Remove spacing between sidebar and content */
+.main-content {
+  margin-left: 240px !important;
+  padding-left: 0 !important;
+  margin-top: 64px;
+  padding: 0;
+  width: calc(100% - 240px);
+}
+
+.layout-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.content-area {
+  flex: 1;
+  margin-left: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}

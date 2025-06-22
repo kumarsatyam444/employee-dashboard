@@ -1,66 +1,47 @@
 import React from 'react';
-import {
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Button,
- 
-  Avatar,
-} from '@mui/material';
-import {
-  PersonAdd,
-  Assignment,
+import { Card, CardContent, Typography, Button, Box } from '@mui/material';
+import { 
+
+  Assignment, 
+  People, 
   CalendarToday,
   Assessment,
-  FileDownload,
-  Notifications,
+ 
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const QuickActions = () => {
+  const navigate = useNavigate();
+
   const actions = [
     {
       title: 'Add Employee',
-      description: 'Add new team member',
-      icon: <PersonAdd />,
+      description: 'Add a new team member',
+      icon: People,
       color: 'primary',
-      action: () => console.log('Add Employee'),
+      action: () => navigate('/employees'),
     },
     {
       title: 'Create Task',
-      description: 'Assign new task',
-      icon: <Assignment />,
+      description: 'Assign a new task',
+      icon: Assignment,
       color: 'secondary',
-      action: () => console.log('Create Task'),
+      action: () => navigate('/tasks'),
     },
     {
       title: 'Schedule Meeting',
-      description: 'Book meeting room',
-      icon: <CalendarToday />,
-      color: 'info',
-      action: () => console.log('Schedule Meeting'),
-    },
-    {
-      title: 'Generate Report',
-      description: 'Create performance report',
-      icon: <Assessment />,
+      description: 'Plan team meetings',
+      icon: CalendarToday,
       color: 'success',
-      action: () => console.log('Generate Report'),
+      action: () => navigate('/calendar'),
     },
     {
-      title: 'Export Data',
-      description: 'Download employee data',
-      icon: <FileDownload />,
+      title: 'View Reports',
+      description: 'Check analytics',
+      icon: Assessment,
       color: 'warning',
-      action: () => console.log('Export Data'),
-    },
-    {
-      title: 'Send Notification',
-      description: 'Notify all employees',
-      icon: <Notifications />,
-      color: 'error',
-      action: () => console.log('Send Notification'),
+      action: () => navigate('/analytics'),
     },
   ];
 
@@ -68,50 +49,51 @@ const QuickActions = () => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, delay: 0.4 }}
     >
-      <Card>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>
+      <Card className="custom-card">
+        <CardContent sx={{ p: 3 }}>
+          <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
             Quick Actions
           </Typography>
-          <Grid container spacing={2}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
             {actions.map((action, index) => (
-              <Grid item xs={12} sm={6} key={index}>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+              <motion.div
+                key={action.title}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <Button
+                  fullWidth
+                  variant="outlined"
+                  startIcon={<action.icon />}
+                  onClick={action.action}
+                  sx={{
+                    justifyContent: 'flex-start',
+                    p: 2,
+                    height: 'auto',
+                    textAlign: 'left',
+                    '&:hover': {
+                      backgroundColor: 'rgba(25, 118, 210, 0.04)',
+                      borderColor: 'primary.main',
+                      transform: 'translateY(-2px)',
+                    },
+                    transition: 'all 0.2s ease',
+                  }}
                 >
-                  <Button
-                    fullWidth
-                    variant="outlined"
-                    onClick={action.action}
-                    sx={{
-                      p: 2,
-                      height: 'auto',
-                      flexDirection: 'column',
-                      gap: 1,
-                      textTransform: 'none',
-                      minHeight: 120,
-                    }}
-                  >
-                    <Avatar sx={{ bgcolor: `${action.color}.main`, mb: 1 }}>
-                      {action.icon}
-                    </Avatar>
-                    <Typography variant="subtitle2" textAlign="center">
+                  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', ml: 1 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 500 }}>
                       {action.title}
                     </Typography>
-                    <Typography variant="caption" color="text.secondary" textAlign="center">
+                    <Typography variant="caption" sx={{ color: '#6b7280' }}>
                       {action.description}
                     </Typography>
-                  </Button>
-                </motion.div>
-              </Grid>
+                  </Box>
+                </Button>
+              </motion.div>
             ))}
-          </Grid>
+          </Box>
         </CardContent>
       </Card>
     </motion.div>

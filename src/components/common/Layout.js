@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Box, Toolbar } from '@mui/material';
+import { Box,  } from '@mui/material';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+
+const drawerWidth = 240;
 
 const Layout = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,20 +13,29 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', minHeight: '100vh', margin: 0, padding: 0 }}>
       <Navbar onMenuClick={handleDrawerToggle} />
       <Sidebar open={mobileOpen} onClose={handleDrawerToggle} />
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - 240px)` },
-          ml: { sm: '240px' },
+          marginLeft: `${drawerWidth}px`,
+          width: `calc(100% - ${drawerWidth}px)`,
+          minHeight: '100vh',
+          padding: 0,
+          margin: 0,
+          paddingTop: '64px', // Add space for navbar
+          '@media (max-width: 600px)': {
+            marginLeft: 0,
+            width: '100%',
+            paddingTop: '56px', // Smaller navbar height on mobile
+          },
         }}
       >
-        <Toolbar />
-        {children}
+        <Box sx={{ padding: 0, margin: 0, height: '100%' }}>
+          {children}
+        </Box>
       </Box>
     </Box>
   );

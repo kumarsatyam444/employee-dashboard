@@ -9,6 +9,7 @@ import {
   Typography,
   Box,
   Avatar,
+  Toolbar,
 } from '@mui/material';
 import {
   Dashboard,
@@ -48,9 +49,19 @@ const Sidebar = ({ open, onClose }) => {
         '& .MuiDrawer-paper': {
           width: drawerWidth,
           boxSizing: 'border-box',
+          position: 'fixed',
+          height: '100%',
+          top: 0,
+          left: 0,
+          zIndex: (theme) => theme.zIndex.drawer,
+          border: 'none',
+          borderRight: 'none',
+          margin: 0,
+          padding: 0,
         },
       }}
     >
+      <Toolbar />
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
         <Avatar sx={{ bgcolor: 'primary.main' }}>
           <Business />
@@ -60,13 +71,15 @@ const Sidebar = ({ open, onClose }) => {
         </Typography>
       </Box>
       
-      <List>
+      <List sx={{ padding: 0, margin: 0 }}>
         {menuItems.map((item) => (
-          <ListItem key={item.text} disablePadding>
+          <ListItem key={item.text} disablePadding sx={{ margin: 0 }}>
             <ListItemButton
               selected={location.pathname === item.path}
               onClick={() => handleNavigation(item.path)}
               sx={{
+                margin: 0,
+                padding: '12px 16px',
                 '&.Mui-selected': {
                   backgroundColor: 'primary.main',
                   color: 'white',
@@ -79,7 +92,7 @@ const Sidebar = ({ open, onClose }) => {
                 },
               }}
             >
-              <ListItemIcon>{item.icon}</ListItemIcon>
+              <ListItemIcon sx={{ minWidth: '40px' }}>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
