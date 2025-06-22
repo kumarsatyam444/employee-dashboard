@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import Employees from './pages/Employees';
 import Calendar from './pages/Calendar';
 import Tasks from './pages/Tasks';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/employees" element={<Employees />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/tasks" element={<Tasks />} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </Layout>
         </Router>

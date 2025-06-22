@@ -21,7 +21,7 @@ export const mockEmployees = [
     salary: 90000,
     hireDate: '2021-08-20',
     performance: 92,
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150',
     status: 'Active',
     attendance: 98,
   },

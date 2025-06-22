@@ -13,8 +13,8 @@ export const useTheme = () => {
 };
 
 const themeColors = {
-  blue: '#1976d2',
   purple: '#9c27b0',
+  blue: '#1976d2',
   green: '#2e7d32',
   orange: '#ed6c02',
   red: '#d32f2f',
@@ -22,7 +22,7 @@ const themeColors = {
 
 export const CustomThemeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
-  const [primaryColor, setPrimaryColor] = useState('blue');
+  const [primaryColor, setPrimaryColor] = useState('purple');
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');

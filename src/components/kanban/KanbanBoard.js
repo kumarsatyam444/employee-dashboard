@@ -6,7 +6,6 @@ import {
   Typography,
   Chip,
   Avatar,
-  IconButton,
   Button,
   Dialog,
   DialogTitle,
